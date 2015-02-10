@@ -8,6 +8,7 @@
   <xs:element name="ArrayOfGridRow" nillable="true" type="tns:ArrayOfGridRow" />
   <xs:complexType name="GridRow">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Archived" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CategoryName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Price" type="xs:decimal" />
       <xs:element minOccurs="0" name="ProductId" type="xs:int" />

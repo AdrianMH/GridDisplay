@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GridDIsplayBLL.Product>
+﻿@model IEnumerable<GridDisplayClient.ServiceReference1.GridRow>
 
 @{
     ViewBag.Title = "View";
@@ -12,7 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=> model.CategoryName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
@@ -26,7 +29,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)

@@ -13,7 +13,8 @@ namespace GridDisplayClient.Controllers
         public ActionResult Index()
         {
             ServiceReference1.GridDisplayClient obj = new ServiceReference1.GridDisplayClient();
-            return View(obj.GetProducts());
+            return View("view",obj.GetProducts("search"));
+            
         }
     }
 }

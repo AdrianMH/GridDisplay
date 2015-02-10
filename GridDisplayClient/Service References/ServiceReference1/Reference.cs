@@ -23,6 +23,9 @@ namespace GridDisplayClient.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ArchivedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CategoryNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -41,6 +44,19 @@ namespace GridDisplayClient.ServiceReference1 {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Archived {
+            get {
+                return this.ArchivedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ArchivedField, value) != true)) {
+                    this.ArchivedField = value;
+                    this.RaisePropertyChanged("Archived");
+                }
             }
         }
         

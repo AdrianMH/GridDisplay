@@ -29,5 +29,7 @@ namespace GridDisplayClient.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<GridDIsplayBLL.Product> Products { get; set; }
     }
 }

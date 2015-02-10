@@ -33,6 +33,7 @@ namespace GridDisplayService
                 row.ProductId = product.ProductId;
                 row.ProductName = product.Name;
                 row.CategoryName = string.Join(",", product.Categories.Select(x => x.Name));
+                row.Archived = product.Archived;
 
                 rows.Add(row);
             }
