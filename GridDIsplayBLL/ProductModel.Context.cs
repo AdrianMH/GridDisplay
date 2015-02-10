@@ -25,8 +25,7 @@ namespace GridDIsplayBLL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Category> Category { get; set; }
-        public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<ProductCategory> ProductCategory { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
     }
 }

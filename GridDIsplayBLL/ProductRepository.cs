@@ -15,7 +15,12 @@ namespace GridDIsplayBLL
 
         public List<Product> GetProducts(string search)
         {
-            return _dbContext.Product.ToList();
+            var xx = from pc in _dbContext.Products
+                     from p in pc.Categories
+                    
+                    select p;
+            
+            return _dbContext.Products.ToList();
         }
     }
 }

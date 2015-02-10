@@ -16,12 +16,12 @@ namespace GridDIsplayBLL
     {
         public Category()
         {
-            this.ProductCategory = new HashSet<ProductCategory>();
+            this.Products = new HashSet<Product>();
         }
     
         public int CategoryId { get; set; }
         public string Name { get; set; }
     
-        public virtual ICollection<ProductCategory> ProductCategory { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GridDisplayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GridDisplayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryId" />
@@ -21,11 +21,13 @@
           <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Archived" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GridDisplay.dbo.ProductCategory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ProductCategory">
           <Key>
-            <PropertyRef Name="ProductCategoryId" />
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="CategoryId" />
           </Key>
-          <Property Name="ProductCategoryId" Type="int" Nullable="false" />
           <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
         </EntityType>
@@ -56,7 +58,12 @@
         <EntityContainer Name="GridDisplayModelStoreContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ProductCategory].[ProductId] AS [ProductId], 
+    [ProductCategory].[CategoryId] AS [CategoryId]
+    FROM [dbo].[ProductCategory] AS [ProductCategory]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_ProductCategory_Category" Association="Self.FK_ProductCategory_Category">
             <End Role="Category" EntitySet="Category" />
             <End Role="ProductCategory" EntitySet="ProductCategory" />
@@ -66,8 +73,7 @@
             <End Role="ProductCategory" EntitySet="ProductCategory" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GridDisplayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -77,7 +83,7 @@
           </Key>
           <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="ProductCategory" Relationship="Self.FK_ProductCategory_Category" FromRole="Category" ToRole="ProductCategory" />
+          <NavigationProperty Name="Products" Relationship="GridDisplayModel.ProductCategory" FromRole="Category" ToRole="Product" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -87,55 +93,20 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Archived" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="ProductCategory" Relationship="Self.FK_ProductCategory_Product" FromRole="Product" ToRole="ProductCategory" />
+          <NavigationProperty Name="Categories" Relationship="GridDisplayModel.ProductCategory" FromRole="Product" ToRole="Category" />
         </EntityType>
-        <EntityType Name="ProductCategory">
-          <Key>
-            <PropertyRef Name="ProductCategoryId" />
-          </Key>
-          <Property Name="ProductCategoryId" Type="Int32" Nullable="false" />
-          <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <Property Name="CategoryId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Category" Relationship="Self.FK_ProductCategory_Category" FromRole="ProductCategory" ToRole="Category" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_ProductCategory_Product" FromRole="ProductCategory" ToRole="Product" />
-        </EntityType>
-        <Association Name="FK_ProductCategory_Category">
-          <End Role="Category" Type="Self.Category" Multiplicity="1" />
-          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="CategoryId" />
-            </Principal>
-            <Dependent Role="ProductCategory">
-              <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductCategory_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="ProductCategory">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="GridDisplayEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Category" EntityType="Self.Category" />
           <EntitySet Name="Product" EntityType="Self.Product" />
-          <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" />
-          <AssociationSet Name="FK_ProductCategory_Category" Association="Self.FK_ProductCategory_Category">
+          <AssociationSet Name="ProductCategory" Association="GridDisplayModel.ProductCategory">
             <End Role="Category" EntitySet="Category" />
-            <End Role="ProductCategory" EntitySet="ProductCategory" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductCategory_Product" Association="Self.FK_ProductCategory_Product">
             <End Role="Product" EntitySet="Product" />
-            <End Role="ProductCategory" EntitySet="ProductCategory" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
+        <Association Name="ProductCategory">
+          <End Type="GridDisplayModel.Category" Role="Category" Multiplicity="*" />
+          <End Type="GridDisplayModel.Product" Role="Product" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -160,15 +131,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductCategory">
-            <EntityTypeMapping TypeName="GridDisplayModel.ProductCategory">
-              <MappingFragment StoreEntitySet="ProductCategory">
-                <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <AssociationSetMapping Name="ProductCategory" TypeName="GridDisplayModel.ProductCategory" StoreEntitySet="ProductCategory">
+            <EndProperty Name="Product">
+              <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+            </EndProperty>
+            <EndProperty Name="Category">
+              <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -183,7 +153,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

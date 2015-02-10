@@ -55,9 +55,6 @@
     <Compile Include="Product.cs">
       <DependentUpon>ProductModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProductCategory.cs">
-      <DependentUpon>ProductModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="ProductModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

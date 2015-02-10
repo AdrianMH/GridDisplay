@@ -16,7 +16,7 @@ namespace GridDIsplayBLL
     {
         public Product()
         {
-            this.ProductCategory = new HashSet<ProductCategory>();
+            this.Categories = new HashSet<Category>();
         }
     
         public int ProductId { get; set; }
@@ -24,6 +24,6 @@ namespace GridDIsplayBLL
         public decimal Price { get; set; }
         public string Archived { get; set; }
     
-        public virtual ICollection<ProductCategory> ProductCategory { get; set; }
+        public virtual ICollection<Category> Categories { get; set; }
     }
 }
