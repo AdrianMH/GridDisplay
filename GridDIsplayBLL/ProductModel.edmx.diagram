@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="565fd28c34f44ae5b481ab313b7f136b" Name="Diagram1">
+        <EntityTypeShape EntityType="GridDisplayModel.Category" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GridDisplayModel.Product" Width="1.5" PointX="6.5" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GridDisplayModel.ProductCategory" Width="1.5" PointX="3.625" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="GridDisplayModel.FK_ProductCategory_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="GridDisplayModel.FK_ProductCategory_Product" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
