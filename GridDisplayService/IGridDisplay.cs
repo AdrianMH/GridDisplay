@@ -15,6 +15,9 @@ namespace GridDisplayService
         List<GridRow> GetProducts(string search);
 
         [OperationContract]
-        bool Archive(int productId);
+        void Archive(int productId);
+
+        [OperationContract]
+        void Create(GridRow product);
     }
 }

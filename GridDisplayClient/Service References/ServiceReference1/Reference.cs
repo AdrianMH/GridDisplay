@@ -133,10 +133,22 @@ namespace GridDisplayClient.ServiceReference1 {
         System.Threading.Tasks.Task<ServiceReference1.GridRow[]> GetProductsAsync(string search);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Archive", ReplyAction="http://tempuri.org/IGridDisplay/ArchiveResponse")]
-        bool Archive(int productId);
+        void Archive(int productId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Archive", ReplyAction="http://tempuri.org/IGridDisplay/ArchiveResponse")]
-        System.Threading.Tasks.Task<bool> ArchiveAsync(int productId);
+        System.Threading.Tasks.Task ArchiveAsync(int productId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Create", ReplyAction="http://tempuri.org/IGridDisplay/CreateResponse")]
+        void Create(ServiceReference1.GridRow product);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Create", ReplyAction="http://tempuri.org/IGridDisplay/CreateResponse")]
+        System.Threading.Tasks.Task CreateAsync(ServiceReference1.GridRow product);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Edit", ReplyAction="http://tempuri.org/IGridDisplay/EditResponse")]
+        void Edit(ServiceReference1.GridRow product);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Edit", ReplyAction="http://tempuri.org/IGridDisplay/EditResponse")]
+        System.Threading.Tasks.Task EditAsync(ServiceReference1.GridRow product);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -174,12 +186,28 @@ namespace GridDisplayClient.ServiceReference1 {
             return base.Channel.GetProductsAsync(search);
         }
         
-        public bool Archive(int productId) {
-            return base.Channel.Archive(productId);
+        public void Archive(int productId) {
+            base.Channel.Archive(productId);
         }
         
-        public System.Threading.Tasks.Task<bool> ArchiveAsync(int productId) {
+        public System.Threading.Tasks.Task ArchiveAsync(int productId) {
             return base.Channel.ArchiveAsync(productId);
+        }
+        
+        public void Create(ServiceReference1.GridRow product) {
+            base.Channel.Create(product);
+        }
+        
+        public System.Threading.Tasks.Task CreateAsync(ServiceReference1.GridRow product) {
+            return base.Channel.CreateAsync(product);
+        }
+        
+        public void Edit(ServiceReference1.GridRow product) {
+            base.Channel.Edit(product);
+        }
+        
+        public System.Threading.Tasks.Task EditAsync(ServiceReference1.GridRow product) {
+            return base.Channel.EditAsync(product);
         }
     }
 }

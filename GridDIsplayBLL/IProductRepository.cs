@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GridDisplayService.Contracts;
 
 namespace GridDIsplayBLL
 {
     public interface IProductRepository
     {
         List<Product> GetProducts(string search);
-        bool Archive(int productId);
+        void Archive(int productId);
+        void Create(GridRow product);
+        void Details(int productId);
     }
 }

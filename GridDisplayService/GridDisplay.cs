@@ -40,13 +40,17 @@ namespace GridDisplayService
             }
             return rows;
         }
-
-
-
-        public bool Archive(int productId)
+        
+        public void Archive(int productId)
         {
             productRepository.Archive(productId);
-            return true;
         }
+        
+        public void Create(GridRow product)
+        {
+            productRepository.Create(product);
+        }
+
+
     }
 }

@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<GridDisplayClient.ServiceReference1.GridRow>
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Index";
 }
 
-<h2>View</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -40,10 +40,8 @@
             @Html.DisplayFor(modelItem => item.Archived)
         </td>
         <td>
-            @Html.ActionLink("Archive","Archive") | 
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
+            @Html.ActionLink("Archive", "Archive", new { productId = item.ProductId }) | 
+            @Html.ActionLink("Details", "Details", new { productId = item.ProductId }) |
         </td>
     </tr>
 }

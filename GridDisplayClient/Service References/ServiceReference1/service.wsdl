@@ -19,6 +19,18 @@
   <wsdl:message name="IGridDisplay_Archive_OutputMessage">
     <wsdl:part name="parameters" element="tns:ArchiveResponse" />
   </wsdl:message>
+  <wsdl:message name="IGridDisplay_Create_InputMessage">
+    <wsdl:part name="parameters" element="tns:Create" />
+  </wsdl:message>
+  <wsdl:message name="IGridDisplay_Create_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGridDisplay_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:Edit" />
+  </wsdl:message>
+  <wsdl:message name="IGridDisplay_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGridDisplay">
     <wsdl:operation name="GetProducts">
       <wsdl:input wsaw:Action="http://tempuri.org/IGridDisplay/GetProducts" message="tns:IGridDisplay_GetProducts_InputMessage" />
@@ -27,6 +39,14 @@
     <wsdl:operation name="Archive">
       <wsdl:input wsaw:Action="http://tempuri.org/IGridDisplay/Archive" message="tns:IGridDisplay_Archive_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGridDisplay/ArchiveResponse" message="tns:IGridDisplay_Archive_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Create">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGridDisplay/Create" message="tns:IGridDisplay_Create_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGridDisplay/CreateResponse" message="tns:IGridDisplay_Create_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGridDisplay/Edit" message="tns:IGridDisplay_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGridDisplay/EditResponse" message="tns:IGridDisplay_Edit_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGridDisplay" type="tns:IGridDisplay">
@@ -42,6 +62,24 @@
     </wsdl:operation>
     <wsdl:operation name="Archive">
       <soap:operation soapAction="http://tempuri.org/IGridDisplay/Archive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Create">
+      <soap:operation soapAction="http://tempuri.org/IGridDisplay/Create" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Edit">
+      <soap:operation soapAction="http://tempuri.org/IGridDisplay/Edit" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

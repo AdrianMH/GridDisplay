@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using GridDisplayService.Contracts;
 
 namespace GridDIsplayBLL
 {
@@ -23,13 +25,29 @@ namespace GridDIsplayBLL
             return _dbContext.Products.ToList();
         }
 
-
-        public bool Archive(int productId)
+        public void Archive(int productId)
         {
             Product product = _dbContext.Products.Find(productId);
             product.Archived = true;
             _dbContext.SaveChanges();
-            return true;
+        }
+
+        public void Create(GridRow productsRow)
+        {
+            Product product = new Product();
+            product.Name = productsRow.ProductName;
+            product.Price = productsRow.Price;
+
+            _dbContext.Products.Add(product);
+            _dbContext.SaveChanges();
+        }
+
+
+
+        public void Details(int productId)
+        {
+            _dbContext.Products.Find(productId);
+            
         }
     }
 }
