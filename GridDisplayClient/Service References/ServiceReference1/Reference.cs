@@ -23,7 +23,7 @@ namespace GridDisplayClient.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ArchivedField;
+        private bool ArchivedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CategoryNameField;
@@ -48,12 +48,12 @@ namespace GridDisplayClient.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Archived {
+        public bool Archived {
             get {
                 return this.ArchivedField;
             }
             set {
-                if ((object.ReferenceEquals(this.ArchivedField, value) != true)) {
+                if ((this.ArchivedField.Equals(value) != true)) {
                     this.ArchivedField = value;
                     this.RaisePropertyChanged("Archived");
                 }
@@ -131,6 +131,12 @@ namespace GridDisplayClient.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/GetProducts", ReplyAction="http://tempuri.org/IGridDisplay/GetProductsResponse")]
         System.Threading.Tasks.Task<ServiceReference1.GridRow[]> GetProductsAsync(string search);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Archive", ReplyAction="http://tempuri.org/IGridDisplay/ArchiveResponse")]
+        bool Archive(int productId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Archive", ReplyAction="http://tempuri.org/IGridDisplay/ArchiveResponse")]
+        System.Threading.Tasks.Task<bool> ArchiveAsync(int productId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -166,6 +172,14 @@ namespace GridDisplayClient.ServiceReference1 {
         
         public System.Threading.Tasks.Task<ServiceReference1.GridRow[]> GetProductsAsync(string search) {
             return base.Channel.GetProductsAsync(search);
+        }
+        
+        public bool Archive(int productId) {
+            return base.Channel.Archive(productId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ArchiveAsync(int productId) {
+            return base.Channel.ArchiveAsync(productId);
         }
     }
 }

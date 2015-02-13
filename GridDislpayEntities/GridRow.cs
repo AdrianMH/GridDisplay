@@ -15,6 +15,6 @@ namespace GridDisplayService.Contracts
         [DataMember]
         public decimal Price { get; set; }
         [DataMember]
-        public string Archived { get; set; }
+        public bool Archived { get; set; }
     }
 }

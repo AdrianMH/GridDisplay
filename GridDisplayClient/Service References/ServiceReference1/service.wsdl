@@ -13,16 +13,35 @@
   <wsdl:message name="IGridDisplay_GetProducts_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProductsResponse" />
   </wsdl:message>
+  <wsdl:message name="IGridDisplay_Archive_InputMessage">
+    <wsdl:part name="parameters" element="tns:Archive" />
+  </wsdl:message>
+  <wsdl:message name="IGridDisplay_Archive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ArchiveResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGridDisplay">
     <wsdl:operation name="GetProducts">
       <wsdl:input wsaw:Action="http://tempuri.org/IGridDisplay/GetProducts" message="tns:IGridDisplay_GetProducts_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGridDisplay/GetProductsResponse" message="tns:IGridDisplay_GetProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Archive">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGridDisplay/Archive" message="tns:IGridDisplay_Archive_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGridDisplay/ArchiveResponse" message="tns:IGridDisplay_Archive_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGridDisplay" type="tns:IGridDisplay">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetProducts">
       <soap:operation soapAction="http://tempuri.org/IGridDisplay/GetProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Archive">
+      <soap:operation soapAction="http://tempuri.org/IGridDisplay/Archive" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -22,5 +22,14 @@ namespace GridDIsplayBLL
             
             return _dbContext.Products.ToList();
         }
+
+
+        public bool Archive(int productId)
+        {
+            Product product = _dbContext.Products.Find(productId);
+            product.Archived = true;
+            _dbContext.SaveChanges();
+            return true;
+        }
     }
 }

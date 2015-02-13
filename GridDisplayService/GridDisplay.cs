@@ -32,12 +32,21 @@ namespace GridDisplayService
             
                 row.ProductId = product.ProductId;
                 row.ProductName = product.Name;
+                row.Price = product.Price;
                 row.CategoryName = string.Join(",", product.Categories.Select(x => x.Name));
                 row.Archived = product.Archived;
 
                 rows.Add(row);
             }
             return rows;
+        }
+
+
+
+        public bool Archive(int productId)
+        {
+            productRepository.Archive(productId);
+            return true;
         }
     }
 }
