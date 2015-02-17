@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using GridDislpayEntities;
 using GridDIsplayBLL;
-using GridDisplayService.Contracts;
 
 
 namespace GridDisplayService
@@ -50,12 +49,11 @@ namespace GridDisplayService
         public void Create(ProductDto productDto)
         {
             Product product = new Product();
-
             product.Name = productDto.Name;
             product.Price = productDto.Price;
 
             productRepository.Create(product);
-        }
+        } 
 
 
     }

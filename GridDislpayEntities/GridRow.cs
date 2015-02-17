@@ -1,7 +1,6 @@
 ﻿using System.Runtime.Serialization;
-using System.ServiceModel;
 
-namespace GridDisplayService.Contracts
+namespace GridDislpayEntities
 {
     [DataContract]
     public class GridRow

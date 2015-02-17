@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Linq;
-using GridDisplayService.Contracts;
+using System.Security.Cryptography;
 
 namespace GridDIsplayBLL
 {
@@ -34,17 +32,24 @@ namespace GridDIsplayBLL
 
         public void Create(Product product)
         {
-
             _dbContext.Products.Add(product);
             _dbContext.SaveChanges();
         }
-
-
-
+        
         public void Details(int productId)
         {
             _dbContext.Products.Find(productId);
 
+        }
+        
+        public List<Category> GetCategories(int id)
+        {
+            var xy = from pc in _dbContext.Categories 
+                     from p in pc.Products 
+                     
+                     select p;
+
+            return _dbContext.Categories.ToList();
         }
     }
 }

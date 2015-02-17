@@ -9,15 +9,9 @@ using GridDislpayEntities;
 namespace GridDisplayService
 {
     [ServiceContract]
-    public interface IGridDisplay
+    public interface ICategories
     {
         [OperationContract]
-        List<GridRow> GetProducts(string search);
-
-        [OperationContract]
-        void Archive(int productId);
-
-        [OperationContract]
-        void Create(ProductDto product);
+        List<CategoryDto> GetCategories(int id);
     }
 }

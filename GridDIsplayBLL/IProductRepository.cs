@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GridDisplayService.Contracts;
 
 namespace GridDIsplayBLL
 {
@@ -13,5 +12,6 @@ namespace GridDIsplayBLL
         void Archive(int productId);
         void Create(Product product);
         void Details(int productId);
+        List<Category> GetCategories(int id);
     }
 }
