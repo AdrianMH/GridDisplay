@@ -11,7 +11,7 @@ namespace GridDIsplayBLL
     {
         List<Product> GetProducts(string search);
         void Archive(int productId);
-        void Create(GridRow product);
+        void Create(Product product);
         void Details(int productId);
     }
 }

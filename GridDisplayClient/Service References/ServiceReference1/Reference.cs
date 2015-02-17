@@ -26,6 +26,9 @@ namespace GridDisplayClient.ServiceReference1 {
         private bool ArchivedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CategoryIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CategoryNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -56,6 +59,19 @@ namespace GridDisplayClient.ServiceReference1 {
                 if ((this.ArchivedField.Equals(value) != true)) {
                     this.ArchivedField = value;
                     this.RaisePropertyChanged("Archived");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CategoryId {
+            get {
+                return this.CategoryIdField;
+            }
+            set {
+                if ((this.CategoryIdField.Equals(value) != true)) {
+                    this.CategoryIdField = value;
+                    this.RaisePropertyChanged("CategoryId");
                 }
             }
         }
@@ -122,6 +138,99 @@ namespace GridDisplayClient.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProductDto", Namespace="http://schemas.datacontract.org/2004/07/GridDislpayEntities")]
+    [System.SerializableAttribute()]
+    public partial class ProductDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ArchivedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal PriceField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Archived {
+            get {
+                return this.ArchivedField;
+            }
+            set {
+                if ((this.ArchivedField.Equals(value) != true)) {
+                    this.ArchivedField = value;
+                    this.RaisePropertyChanged("Archived");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Price {
+            get {
+                return this.PriceField;
+            }
+            set {
+                if ((this.PriceField.Equals(value) != true)) {
+                    this.PriceField = value;
+                    this.RaisePropertyChanged("Price");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IGridDisplay")]
     public interface IGridDisplay {
@@ -139,16 +248,10 @@ namespace GridDisplayClient.ServiceReference1 {
         System.Threading.Tasks.Task ArchiveAsync(int productId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Create", ReplyAction="http://tempuri.org/IGridDisplay/CreateResponse")]
-        void Create(ServiceReference1.GridRow product);
+        void Create(ServiceReference1.ProductDto product);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Create", ReplyAction="http://tempuri.org/IGridDisplay/CreateResponse")]
-        System.Threading.Tasks.Task CreateAsync(ServiceReference1.GridRow product);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Edit", ReplyAction="http://tempuri.org/IGridDisplay/EditResponse")]
-        void Edit(ServiceReference1.GridRow product);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Edit", ReplyAction="http://tempuri.org/IGridDisplay/EditResponse")]
-        System.Threading.Tasks.Task EditAsync(ServiceReference1.GridRow product);
+        System.Threading.Tasks.Task CreateAsync(ServiceReference1.ProductDto product);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -194,20 +297,12 @@ namespace GridDisplayClient.ServiceReference1 {
             return base.Channel.ArchiveAsync(productId);
         }
         
-        public void Create(ServiceReference1.GridRow product) {
+        public void Create(ServiceReference1.ProductDto product) {
             base.Channel.Create(product);
         }
         
-        public System.Threading.Tasks.Task CreateAsync(ServiceReference1.GridRow product) {
+        public System.Threading.Tasks.Task CreateAsync(ServiceReference1.ProductDto product) {
             return base.Channel.CreateAsync(product);
-        }
-        
-        public void Edit(ServiceReference1.GridRow product) {
-            base.Channel.Edit(product);
-        }
-        
-        public System.Threading.Tasks.Task EditAsync(ServiceReference1.GridRow product) {
-            return base.Channel.EditAsync(product);
         }
     }
 }

@@ -9,6 +9,8 @@ namespace GridDisplayService.Contracts
         [DataMember]
         public int ProductId { get; set; }
         [DataMember]
+        public int CategoryId { get; set; }
+        [DataMember]
         public string ProductName { get; set; }
         [DataMember]
         public string CategoryName { get; set; }

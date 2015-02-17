@@ -5,11 +5,6 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GridDisplayService", "GridDisplayService\GridDisplayService.csproj", "{7C97B0F7-ECDF-4A7A-8E87-032C6768674A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GridDisplayClient", "GridDisplayClient\GridDisplayClient.csproj", "{E620E41B-C18A-4BF9-B19E-4FD8E49DB8B5}"
-	ProjectSection(ProjectDependencies) = postProject
-		{7C97B0F7-ECDF-4A7A-8E87-032C6768674A} = {7C97B0F7-ECDF-4A7A-8E87-032C6768674A}
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GridDIsplayBLL", "GridDIsplayBLL\GridDIsplayBLL.csproj", "{1C81C60B-644B-4F9D-8DE0-51A086A5C1F7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GridDislpayEntities", "GridDislpayEntities\GridDislpayEntities.csproj", "{FA379072-1883-4C07-B445-7E70CFD8D81B}"
@@ -24,10 +19,6 @@ Global
 		{7C97B0F7-ECDF-4A7A-8E87-032C6768674A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C97B0F7-ECDF-4A7A-8E87-032C6768674A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C97B0F7-ECDF-4A7A-8E87-032C6768674A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E620E41B-C18A-4BF9-B19E-4FD8E49DB8B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E620E41B-C18A-4BF9-B19E-4FD8E49DB8B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E620E41B-C18A-4BF9-B19E-4FD8E49DB8B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E620E41B-C18A-4BF9-B19E-4FD8E49DB8B5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1C81C60B-644B-4F9D-8DE0-51A086A5C1F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1C81C60B-644B-4F9D-8DE0-51A086A5C1F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C81C60B-644B-4F9D-8DE0-51A086A5C1F7}.Release|Any CPU.ActiveCfg = Release|Any CPU

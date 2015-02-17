@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using GridDislpayEntities;
 using GridDisplayService.Contracts;
 
 namespace GridDisplayService
@@ -18,6 +19,6 @@ namespace GridDisplayService
         void Archive(int productId);
 
         [OperationContract]
-        void Create(GridRow product);
+        void Create(ProductDto product);
     }
 }

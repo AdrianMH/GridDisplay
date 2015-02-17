@@ -12,16 +12,16 @@ namespace GridDIsplayBLL
 
         public ProductRepository()
         {
-            this._dbContext=new GridDisplayEntities();
+            this._dbContext = new GridDisplayEntities();
         }
 
         public List<Product> GetProducts(string search)
         {
             var xx = from pc in _dbContext.Products
                      from p in pc.Categories
-                    
-                    select p;
-            
+
+                     select p;
+
             return _dbContext.Products.ToList();
         }
 
@@ -32,11 +32,8 @@ namespace GridDIsplayBLL
             _dbContext.SaveChanges();
         }
 
-        public void Create(GridRow productsRow)
+        public void Create(Product product)
         {
-            Product product = new Product();
-            product.Name = productsRow.ProductName;
-            product.Price = productsRow.Price;
 
             _dbContext.Products.Add(product);
             _dbContext.SaveChanges();
@@ -47,7 +44,7 @@ namespace GridDIsplayBLL
         public void Details(int productId)
         {
             _dbContext.Products.Find(productId);
-            
+
         }
     }
 }

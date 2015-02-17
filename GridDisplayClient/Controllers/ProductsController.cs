@@ -5,7 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Services.Description;
-using GridDIsplayBLL;
+
+using GridDisplayClient.Models;
 using GridDisplayClient.ServiceReference1;
 
 namespace GridDisplayClient.Controllers
@@ -32,14 +33,22 @@ namespace GridDisplayClient.Controllers
             return RedirectToAction("Index");
         }
         
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(GridRow product)
+        public ActionResult Create(ProductViewModel productViewModel)
         {
+            //intra product(productviewmodel)
+            //metoda din servicereference.create primeste de tip gridrow
+            var product = new ProductDto();
+
+            product.Name = productViewModel.Name;
+            product.Price = productViewModel.Price;
+
             serviceReference.Create(product);
             return RedirectToAction("Index");
         }

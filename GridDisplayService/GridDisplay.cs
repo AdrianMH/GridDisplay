@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Syndication;
 using System.Text;
 using System.Threading.Tasks;
+using GridDislpayEntities;
 using GridDIsplayBLL;
 using GridDisplayService.Contracts;
 
@@ -46,8 +47,13 @@ namespace GridDisplayService
             productRepository.Archive(productId);
         }
         
-        public void Create(GridRow product)
+        public void Create(ProductDto productDto)
         {
+            Product product = new Product();
+
+            product.Name = productDto.Name;
+            product.Price = productDto.Price;
+
             productRepository.Create(product);
         }
 
