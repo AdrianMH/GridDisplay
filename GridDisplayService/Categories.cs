@@ -35,5 +35,15 @@ namespace GridDisplayService
 
             return categories;
         }
+
+
+        public List<CategoryDto> GetCategories()
+        {
+            return productRepository.GetCategories().Select(item => new CategoryDto()
+            {
+                Name = item.Name,
+                Id = item.CategoryId
+            }).ToList();
+        }
     }
 }

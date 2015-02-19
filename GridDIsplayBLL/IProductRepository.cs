@@ -13,5 +13,8 @@ namespace GridDIsplayBLL
         void Create(Product product);
         void Details(int productId);
         List<Category> GetCategories(int id);
+        Category GetCategory(int id);
+
+        List<Category> GetCategories();
     }
 }

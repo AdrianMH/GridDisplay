@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/GridDisplayService.Contracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/GridDisplayService.Contracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/GridDislpayEntities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/GridDislpayEntities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8733/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:complexType name="ArrayOfGridRow">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="GridRow" nillable="true" type="tns:GridRow" />
@@ -17,4 +18,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="GridRow" nillable="true" type="tns:GridRow" />
+  <xs:complexType name="ProductDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Archived" type="xs:boolean" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Categories" nillable="true" type="q1:ArrayOfint" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProductDto" nillable="true" type="tns:ProductDto" />
 </xs:schema>

@@ -24,6 +24,6 @@ namespace GridDIsplayBLL
         public decimal Price { get; set; }
         public bool Archived { get; set; }
     
-        public  ICollection<Category> Categories { get; set; }
+        public virtual ICollection<Category> Categories { get; set; }
     }
 }

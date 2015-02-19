@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 
 namespace GridDIsplayBLL
 {
@@ -50,6 +52,18 @@ namespace GridDIsplayBLL
                      select p;
 
             return _dbContext.Categories.ToList();
+        }
+
+
+        public List<Category> GetCategories()
+        {
+            return _dbContext.Categories.ToList();
+        }
+
+
+        public Category GetCategory(int id)
+        {
+            return _dbContext.Categories.FirstOrDefault(item => item.CategoryId == id);
         }
     }
 }

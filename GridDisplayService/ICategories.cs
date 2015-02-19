@@ -11,7 +11,10 @@ namespace GridDisplayService
     [ServiceContract]
     public interface ICategories
     {
+        //[OperationContract]
+        //List<CategoryDto> GetCategories(int id);
+
         [OperationContract]
-        List<CategoryDto> GetCategories(int id);
+        List<CategoryDto> GetCategories();
     }
 }

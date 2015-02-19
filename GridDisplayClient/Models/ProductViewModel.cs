@@ -9,6 +9,6 @@ namespace GridDisplayClient.Models
     {
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public List<int> CategoriesId { get; set; } 
+        public int[] CategoriesId { get; set; } 
     }
 }

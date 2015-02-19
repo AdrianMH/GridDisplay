@@ -18,5 +18,7 @@ namespace GridDislpayEntities
         public decimal Price { get; set; }
         [DataMember]
         public bool Archived { get; set; }
+        [DataMember]
+        public List<int> Categories { get; set; } 
     }
 }

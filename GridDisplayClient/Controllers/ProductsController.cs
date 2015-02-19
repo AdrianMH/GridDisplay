@@ -8,6 +8,7 @@ using System.Web.Services.Description;
 
 using GridDisplayClient.Models;
 using GridDisplayClient.ServiceReference1;
+using GridDisplayClient.ServiceReference2;
 
 namespace GridDisplayClient.Controllers
 {
@@ -15,10 +16,12 @@ namespace GridDisplayClient.Controllers
     {
 
         readonly private ServiceReference1.GridDisplayClient serviceReference;
+        private readonly ServiceReference2.CategoriesClient serviceReference2;
 
         public ProductsController()
         {
             serviceReference = new ServiceReference1.GridDisplayClient();
+            serviceReference2 = new ServiceReference2.CategoriesClient();
         }
        
         // GET: Db
@@ -36,6 +39,8 @@ namespace GridDisplayClient.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            //ViewData["GroupsList"] = new MultiSelectList(myGroups.GetAllGroups(), "GroupID", "GroupName");
+            ViewData["CategoriesId"] = new MultiSelectList(serviceReference2.GetCategories(), "Id", "Name");
             return View();
         }
 
@@ -48,6 +53,8 @@ namespace GridDisplayClient.Controllers
 
             product.Name = productViewModel.Name;
             product.Price = productViewModel.Price;
+            product.Categories = productViewModel.CategoriesId;
+
 
             serviceReference.Create(product);
             return RedirectToAction("Index");

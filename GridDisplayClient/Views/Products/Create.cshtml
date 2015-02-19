@@ -1,4 +1,5 @@
-﻿@model GridDisplayClient.Models.ProductViewModel
+﻿@using GridDisplayClient.ServiceReference2
+@model GridDisplayClient.Models.ProductViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -23,11 +24,19 @@
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
         </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.CategoriesId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-12">
+                @Html.ListBoxFor(model => model.CategoriesId, (IEnumerable<SelectListItem>) ViewData["CategoriesId"], new {@class = " form-control "})
             </div>
         </div>
 

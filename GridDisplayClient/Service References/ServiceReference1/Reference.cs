@@ -15,7 +15,7 @@ namespace GridDisplayClient.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GridRow", Namespace="http://schemas.datacontract.org/2004/07/GridDisplayService.Contracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GridRow", Namespace="http://schemas.datacontract.org/2004/07/GridDislpayEntities")]
     [System.SerializableAttribute()]
     public partial class GridRow : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -151,6 +151,9 @@ namespace GridDisplayClient.ServiceReference1 {
         private bool ArchivedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int[] CategoriesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -178,6 +181,19 @@ namespace GridDisplayClient.ServiceReference1 {
                 if ((this.ArchivedField.Equals(value) != true)) {
                     this.ArchivedField = value;
                     this.RaisePropertyChanged("Archived");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int[] Categories {
+            get {
+                return this.CategoriesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoriesField, value) != true)) {
+                    this.CategoriesField = value;
+                    this.RaisePropertyChanged("Categories");
                 }
             }
         }

@@ -52,6 +52,11 @@ namespace GridDisplayService
             product.Name = productDto.Name;
             product.Price = productDto.Price;
 
+            foreach (int category in productDto.Categories)
+            {
+                product.Categories.Add(productRepository.GetCategory(category));
+            }
+
             productRepository.Create(product);
         } 
 
