@@ -7,8 +7,22 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create") 
 </p>
+
+<p>
+    | @Html.ActionLink("A", "Index", new { filter = "A" }) | @Html.ActionLink("B", "Index", new { filter = "B" }) | @Html.ActionLink("C", "Index", new { filter = "C" }) | @Html.ActionLink("D", "Index", new { filter = "D" }) | @Html.ActionLink("E", "Index", new { filter = "E" }) | 
+      @Html.ActionLink("F", "Index", new { filter = "F" }) | @Html.ActionLink("G", "Index", new { filter = "G" }) | @Html.ActionLink("H", "Index", new { filter = "H" }) | @Html.ActionLink("I", "Index", new { filter = "I" }) | 
+      @Html.ActionLink("J", "Index", new { filter = "J" }) | @Html.ActionLink("K", "Index", new { filter = "K" }) | @Html.ActionLink("L", "Index", new { filter = "L" }) | @Html.ActionLink("M", "Index", new { filter = "M" }) | 
+      @Html.ActionLink("N", "Index", new { filter = "N" }) | @Html.ActionLink("O", "Index", new { filter = "O" }) | @Html.ActionLink("P", "Index", new { filter = "P" }) | @Html.ActionLink("Q", "Index", new { filter = "Q" }) | 
+      @Html.ActionLink("R", "Index", new { filter = "R" }) | @Html.ActionLink("S", "Index", new { filter = "S" }) | @Html.ActionLink("T", "Index", new { filter = "T" }) | @Html.ActionLink("U", "Index", new { filter = "U" }) | @Html.ActionLink("V", "Index", new { filter = "V" }) |
+      @Html.ActionLink("W", "Index", new { filter = "W" }) | @Html.ActionLink("X", "Index", new { filter = "X" }) | @Html.ActionLink("Y", "Index", new { filter = "Y" }) | @Html.ActionLink("Z", "Index", new { filter = "Z" }) |     
+</p>
+
+<p>
+    @Html.ActionLink("Clear filter", "Index")
+</p>
+
 <table class="table">
     <tr>
         <th>
@@ -42,6 +56,7 @@
         <td>
             @Html.ActionLink("Archive", "Archive", new { productId = item.ProductId }) | 
             @Html.ActionLink("Details", "Details", new { productId = item.ProductId }) |
+            @Html.ActionLink("Edit", "Edit", new { productId = item.ProductId })
         </td>
     </tr>
 }

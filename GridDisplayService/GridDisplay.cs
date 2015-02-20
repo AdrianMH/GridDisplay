@@ -20,9 +20,9 @@ namespace GridDisplayService
         {
             productRepository = new ProductRepository();
         }
-        public List<GridRow> GetProducts(string search)
+        public List<GridRow> GetProducts(string filter)
         {
-            var products = productRepository.GetProducts(search);
+            var products = productRepository.GetProducts(filter);
 
             List<GridRow> rows = new List<GridRow>();
 
@@ -59,7 +59,5 @@ namespace GridDisplayService
 
             productRepository.Create(product);
         } 
-
-
     }
 }

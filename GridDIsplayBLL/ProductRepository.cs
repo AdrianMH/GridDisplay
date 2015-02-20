@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Security.Cryptography;
@@ -15,14 +16,24 @@ namespace GridDIsplayBLL
             this._dbContext = new GridDisplayEntities();
         }
 
-        public List<Product> GetProducts(string search)
+        public List<Product> GetProducts(string filter)
         {
-            var xx = from pc in _dbContext.Products
-                     from p in pc.Categories
+            if (String.IsNullOrEmpty(filter))
+            {
+                var allProducts = from pc in _dbContext.Products
+                    from p in pc.Categories
 
-                     select p;
+                    select pc;
 
-            return _dbContext.Products.ToList();
+                return allProducts.ToList();
+            }
+
+            var filteredProducts = from pc in _dbContext.Products
+                from p in pc.Categories
+                where pc.Name.StartsWith(filter)
+                select pc;
+
+            return filteredProducts.ToList();
         }
 
         public void Archive(int productId)

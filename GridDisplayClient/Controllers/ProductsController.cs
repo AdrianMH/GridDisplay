@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Services.Description;
-
+﻿using System.Web.Mvc;
 using GridDisplayClient.Models;
 using GridDisplayClient.ServiceReference1;
 using GridDisplayClient.ServiceReference2;
@@ -15,24 +8,23 @@ namespace GridDisplayClient.Controllers
     public class ProductsController : Controller
     {
 
-        readonly private ServiceReference1.GridDisplayClient serviceReference;
-        private readonly ServiceReference2.CategoriesClient serviceReference2;
+        readonly private ServiceReference1.GridDisplayClient serviceReference1;
+        readonly private CategoriesClient serviceReference2;
 
         public ProductsController()
         {
-            serviceReference = new ServiceReference1.GridDisplayClient();
-            serviceReference2 = new ServiceReference2.CategoriesClient();
+            serviceReference1 = new ServiceReference1.GridDisplayClient();
+            serviceReference2 = new CategoriesClient();
         }
        
-        // GET: Db
-        public ActionResult Index()
+        public ActionResult Index(string filter)
         {
-            return View("Index",serviceReference.GetProducts("search"));
+            return View("Index",serviceReference1.GetProducts(filter));
         }
 
         public ActionResult Archive(int productId)
         {
-            serviceReference.Archive(productId);
+            serviceReference1.Archive(productId);
             return RedirectToAction("Index");
         }
         
@@ -56,7 +48,7 @@ namespace GridDisplayClient.Controllers
             product.Categories = productViewModel.CategoriesId;
 
 
-            serviceReference.Create(product);
+            serviceReference1.Create(product);
             return RedirectToAction("Index");
         }
 
@@ -64,6 +56,11 @@ namespace GridDisplayClient.Controllers
         {
             return View();
         }
-        
+
+        [HttpGet]
+        public ActionResult Edit()
+        {
+            return View();
+        }
     }
 }

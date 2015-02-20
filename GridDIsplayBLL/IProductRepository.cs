@@ -8,7 +8,7 @@ namespace GridDIsplayBLL
 {
     public interface IProductRepository
     {
-        List<Product> GetProducts(string search);
+        List<Product> GetProducts(string filter);
         void Archive(int productId);
         void Create(Product product);
         void Details(int productId);

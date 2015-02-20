@@ -252,10 +252,10 @@ namespace GridDisplayClient.ServiceReference1 {
     public interface IGridDisplay {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/GetProducts", ReplyAction="http://tempuri.org/IGridDisplay/GetProductsResponse")]
-        ServiceReference1.GridRow[] GetProducts(string search);
+        ServiceReference1.GridRow[] GetProducts(string filter);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/GetProducts", ReplyAction="http://tempuri.org/IGridDisplay/GetProductsResponse")]
-        System.Threading.Tasks.Task<ServiceReference1.GridRow[]> GetProductsAsync(string search);
+        System.Threading.Tasks.Task<ServiceReference1.GridRow[]> GetProductsAsync(string filter);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Archive", ReplyAction="http://tempuri.org/IGridDisplay/ArchiveResponse")]
         void Archive(int productId);
@@ -297,12 +297,12 @@ namespace GridDisplayClient.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public ServiceReference1.GridRow[] GetProducts(string search) {
-            return base.Channel.GetProducts(search);
+        public ServiceReference1.GridRow[] GetProducts(string filter) {
+            return base.Channel.GetProducts(filter);
         }
         
-        public System.Threading.Tasks.Task<ServiceReference1.GridRow[]> GetProductsAsync(string search) {
-            return base.Channel.GetProductsAsync(search);
+        public System.Threading.Tasks.Task<ServiceReference1.GridRow[]> GetProductsAsync(string filter) {
+            return base.Channel.GetProductsAsync(filter);
         }
         
         public void Archive(int productId) {

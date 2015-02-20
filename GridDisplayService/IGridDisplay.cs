@@ -12,7 +12,7 @@ namespace GridDisplayService
     public interface IGridDisplay
     {
         [OperationContract]
-        List<GridRow> GetProducts(string search);
+        List<GridRow> GetProducts(string filter);
 
         [OperationContract]
         void Archive(int productId);
