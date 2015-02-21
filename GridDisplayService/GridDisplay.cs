@@ -58,6 +58,27 @@ namespace GridDisplayService
             }
 
             productRepository.Create(product);
-        } 
+        }
+
+        public List<GridRow> GetDetails(int productId)
+        {
+            var products = productRepository.Details(productId);
+
+            List<GridRow> rows = new List<GridRow>();
+
+            foreach (var product in products)
+            {
+                GridRow row = new GridRow();
+
+                row.ProductId = product.ProductId;
+                row.ProductName = product.Name;
+                row.Price = product.Price;
+                row.CategoryName = string.Join(",", product.Categories.Select(x => x.Name));
+                row.Archived = product.Archived;
+
+                rows.Add(row);
+            }
+            return rows;
+        }
     }
 }

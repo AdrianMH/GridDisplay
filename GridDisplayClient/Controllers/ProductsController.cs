@@ -54,7 +54,7 @@ namespace GridDisplayClient.Controllers
 
         public ActionResult Details(int productId)
         {
-            return View();
+            return View("Details", serviceReference1.GetDetails(productId));
         }
 
         [HttpGet]

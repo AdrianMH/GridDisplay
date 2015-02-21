@@ -49,10 +49,9 @@ namespace GridDIsplayBLL
             _dbContext.SaveChanges();
         }
         
-        public void Details(int productId)
+        public List<Product> Details(int productId)
         {
-            _dbContext.Products.Find(productId);
-
+            return _dbContext.Products.Find(productId);
         }
         
         public List<Category> GetCategories(int id)

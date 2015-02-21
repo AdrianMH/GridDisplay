@@ -19,5 +19,8 @@ namespace GridDisplayService
 
         [OperationContract]
         void Create(ProductDto product);
+
+        [OperationContract]
+        List<GridRow> GetDetails(int productId);
     }
 }
