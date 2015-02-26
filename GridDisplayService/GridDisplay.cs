@@ -60,25 +60,24 @@ namespace GridDisplayService
             productRepository.Create(product);
         }
 
-        public List<GridRow> GetDetails(int productId)
+        //public void GetDetails(ProductDto productDto)
+        //{
+        //    productRepository.GetDetails(productDto);
+        //}
+
+
+        public void Edit(ProductDto productDto)
         {
-            var products = productRepository.Details(productId);
-
-            List<GridRow> rows = new List<GridRow>();
-
-            foreach (var product in products)
+            Product product = new Product();
+            product.Name = productDto.Name;
+            product.Price = productDto.Price;
+            
+            foreach (int category in productDto.Categories)
             {
-                GridRow row = new GridRow();
-
-                row.ProductId = product.ProductId;
-                row.ProductName = product.Name;
-                row.Price = product.Price;
-                row.CategoryName = string.Join(",", product.Categories.Select(x => x.Name));
-                row.Archived = product.Archived;
-
-                rows.Add(row);
+                product.Categories.Add(productRepository.GetCategory(category));
             }
-            return rows;
+            
+            productRepository.Edit(product);
         }
     }
 }

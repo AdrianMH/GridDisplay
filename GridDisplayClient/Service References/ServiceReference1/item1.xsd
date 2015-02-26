@@ -39,18 +39,16 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetDetails">
+  <xs:element name="Edit">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="productId" type="xs:int" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/GridDislpayEntities" minOccurs="0" name="product" nillable="true" type="q3:ProductDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetDetailsResponse">
+  <xs:element name="EditResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/GridDislpayEntities" minOccurs="0" name="GetDetailsResult" nillable="true" type="q3:ArrayOfGridRow" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

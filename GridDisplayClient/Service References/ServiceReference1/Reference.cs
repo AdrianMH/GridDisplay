@@ -269,11 +269,11 @@ namespace GridDisplayClient.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Create", ReplyAction="http://tempuri.org/IGridDisplay/CreateResponse")]
         System.Threading.Tasks.Task CreateAsync(ServiceReference1.ProductDto product);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/GetDetails", ReplyAction="http://tempuri.org/IGridDisplay/GetDetailsResponse")]
-        ServiceReference1.GridRow[] GetDetails(int productId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Edit", ReplyAction="http://tempuri.org/IGridDisplay/EditResponse")]
+        void Edit(ServiceReference1.ProductDto product);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/GetDetails", ReplyAction="http://tempuri.org/IGridDisplay/GetDetailsResponse")]
-        System.Threading.Tasks.Task<ServiceReference1.GridRow[]> GetDetailsAsync(int productId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Edit", ReplyAction="http://tempuri.org/IGridDisplay/EditResponse")]
+        System.Threading.Tasks.Task EditAsync(ServiceReference1.ProductDto product);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -327,12 +327,12 @@ namespace GridDisplayClient.ServiceReference1 {
             return base.Channel.CreateAsync(product);
         }
         
-        public ServiceReference1.GridRow[] GetDetails(int productId) {
-            return base.Channel.GetDetails(productId);
+        public void Edit(ServiceReference1.ProductDto product) {
+            base.Channel.Edit(product);
         }
         
-        public System.Threading.Tasks.Task<ServiceReference1.GridRow[]> GetDetailsAsync(int productId) {
-            return base.Channel.GetDetailsAsync(productId);
+        public System.Threading.Tasks.Task EditAsync(ServiceReference1.ProductDto product) {
+            return base.Channel.EditAsync(product);
         }
     }
 }

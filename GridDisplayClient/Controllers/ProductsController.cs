@@ -52,15 +52,34 @@ namespace GridDisplayClient.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Details(int productId)
+        public ActionResult Details(ProductViewModel productViewModel)
         {
-            return View("Details", serviceReference1.GetDetails(productId));
+           ProductDto product = new ProductDto();
+
+           ViewData["CategoriesId"] = new MultiSelectList(serviceReference2.GetCategories(), "Id", "Name");
+
+           return View();
         }
 
         [HttpGet]
-        public ActionResult Edit()
+        public ActionResult Edit(int productId)
         {
+            ViewData["CategoriesId"] = new MultiSelectList(serviceReference2.GetCategories(), "Id", "Name");
+
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Edit(ProductViewModel productViewModel)
+        {
+            var product = new ProductDto();
+
+            product.Name = productViewModel.Name;
+            product.Price = productViewModel.Price;
+            product.Categories = productViewModel.CategoriesId;
+
+            serviceReference1.Edit(product);
+            return RedirectToAction("Index");
         }
     }
 }

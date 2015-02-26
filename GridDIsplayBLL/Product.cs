@@ -25,5 +25,7 @@ namespace GridDIsplayBLL
         public bool Archived { get; set; }
     
         public virtual ICollection<Category> Categories { get; set; }
+
+       
     }
 }

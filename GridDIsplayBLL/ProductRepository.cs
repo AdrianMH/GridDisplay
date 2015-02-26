@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Security.Cryptography;
@@ -48,12 +49,7 @@ namespace GridDIsplayBLL
             _dbContext.Products.Add(product);
             _dbContext.SaveChanges();
         }
-        
-        public List<Product> Details(int productId)
-        {
-            return _dbContext.Products.Find(productId);
-        }
-        
+       
         public List<Category> GetCategories(int id)
         {
             var xy = from pc in _dbContext.Categories 
@@ -75,5 +71,19 @@ namespace GridDIsplayBLL
         {
             return _dbContext.Categories.FirstOrDefault(item => item.CategoryId == id);
         }
+
+
+        public void GetDetails(int productId)
+        {
+            _dbContext.Products.Find(productId);
+        }
+
+
+        public void Edit(Product product)
+        {
+            _dbContext.Entry(_dbContext).State = EntityState.Modified;
+            _dbContext.SaveChanges();
+        }
+        
     }
 }

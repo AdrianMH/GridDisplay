@@ -11,9 +11,10 @@ namespace GridDIsplayBLL
         List<Product> GetProducts(string filter);
         void Archive(int productId);
         void Create(Product product);
-        List<Product> Details(int productId);
+        //void GetDetails(Product product);
         List<Category> GetCategories(int id);
         Category GetCategory(int id);
+        void Edit(Product product);
 
         List<Category> GetCategories();
     }

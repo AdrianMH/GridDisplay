@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
@@ -20,7 +21,10 @@ namespace GridDisplayService
         [OperationContract]
         void Create(ProductDto product);
 
+        //[OperationContract]
+        //void GetDetails(ProductDto product);
+
         [OperationContract]
-        List<GridRow> GetDetails(int productId);
+        void Edit(ProductDto product);
     }
 }
