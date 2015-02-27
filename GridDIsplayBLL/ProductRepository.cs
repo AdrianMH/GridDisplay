@@ -71,19 +71,25 @@ namespace GridDIsplayBLL
         {
             return _dbContext.Categories.FirstOrDefault(item => item.CategoryId == id);
         }
-
-
-        public void GetDetails(int productId)
+        
+        public void Save(Product product)
         {
-            _dbContext.Products.Find(productId);
-        }
+            Product productDb = _dbContext.Products.Find(product.ProductId);
 
+            productDb.ProductId = product.ProductId;
+            productDb.Name = product.Name;
+            productDb.Price = product.Price;
+            productDb.Categories = product.Categories;
+            productDb.Archived = product.Archived;
 
-        public void Edit(Product product)
-        {
-            _dbContext.Entry(_dbContext).State = EntityState.Modified;
+            _dbContext.Entry(productDb).State = EntityState.Modified;
+
             _dbContext.SaveChanges();
         }
         
+        public Product GetDetails(int id)
+        {
+            return _dbContext.Products.FirstOrDefault(x => x.ProductId == id);
+        }
     }
 }

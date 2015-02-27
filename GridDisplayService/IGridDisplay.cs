@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using GridDislpayEntities;
+using GridDIsplayBLL;
 
 namespace GridDisplayService
 {
@@ -21,10 +22,10 @@ namespace GridDisplayService
         [OperationContract]
         void Create(ProductDto product);
 
-        //[OperationContract]
-        //void GetDetails(ProductDto product);
+        [OperationContract]
+        ProductDto GetDetails(int id);
 
         [OperationContract]
-        void Edit(ProductDto product);
+        void Save(ProductDto product);
     }
 }

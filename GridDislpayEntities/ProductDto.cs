@@ -19,6 +19,11 @@ namespace GridDislpayEntities
         [DataMember]
         public bool Archived { get; set; }
         [DataMember]
-        public List<int> Categories { get; set; } 
+        public List<int> Categories { get; set; }
+
+        public ProductDto()
+        {
+            Categories = new List<int>();
+        }
     }
 }

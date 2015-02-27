@@ -47,26 +47,42 @@ namespace GridDisplayClient.Controllers
             product.Price = productViewModel.Price;
             product.Categories = productViewModel.CategoriesId;
 
-
             serviceReference1.Create(product);
+
             return RedirectToAction("Index");
         }
-
-        public ActionResult Details(ProductViewModel productViewModel)
+        
+        [HttpGet]
+        public ActionResult Details(int productId)
         {
-           ProductDto product = new ProductDto();
+            var productDto = serviceReference1.GetDetails(productId);
+            var productViewModel = new ProductViewModel();
 
-           ViewData["CategoriesId"] = new MultiSelectList(serviceReference2.GetCategories(), "Id", "Name");
+            productViewModel.ProductId = productDto.Id;
+            productViewModel.Name = productDto.Name;
+            productViewModel.Price = productDto.Price;
+            productViewModel.CategoriesId = productDto.Categories;
 
-           return View();
+            ViewData["CategoriesId"] = new MultiSelectList(serviceReference2.GetCategories(), "Id", "Name");
+
+            return View(productViewModel);
         }
 
         [HttpGet]
         public ActionResult Edit(int productId)
         {
+            var productDto = serviceReference1.GetDetails(productId);
+
+            var productViewModel = new ProductViewModel();
+
+            productViewModel.ProductId = productDto.Id;
+            productViewModel.Name = productDto.Name;
+            productViewModel.Price = productDto.Price;
+            productViewModel.CategoriesId = productDto.Categories;
+
             ViewData["CategoriesId"] = new MultiSelectList(serviceReference2.GetCategories(), "Id", "Name");
 
-            return View();
+            return View(productViewModel);
         }
 
         [HttpPost]
@@ -74,11 +90,13 @@ namespace GridDisplayClient.Controllers
         {
             var product = new ProductDto();
 
+            product.Id = productViewModel.ProductId;
             product.Name = productViewModel.Name;
             product.Price = productViewModel.Price;
             product.Categories = productViewModel.CategoriesId;
 
-            serviceReference1.Edit(product);
+            serviceReference1.Save(product);
+
             return RedirectToAction("Index");
         }
     }

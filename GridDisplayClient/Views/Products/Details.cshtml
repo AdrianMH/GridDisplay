@@ -1,4 +1,4 @@
-﻿@model GridDisplayClient.ServiceReference1.GridRow
+﻿@model GridDisplayClient.Models.ProductViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -11,19 +11,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Archived)
+            @Html.DisplayNameFor(model => model.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Archived)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CategoryName)
+            @Html.DisplayFor(model => model.Name)
         </dd>
 
         <dt>
@@ -35,11 +27,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
+            @Html.DisplayNameFor(model => model.CategoriesId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ProductName)
+            @Html.DisplayFor(model => model.CategoriesId)
         </dd>
 
     </dl>

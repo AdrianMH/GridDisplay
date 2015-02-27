@@ -152,6 +152,9 @@
     <Content Include="Service References\ServiceReference1\GridDisplayClient.ServiceReference1.GridRow.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\ServiceReference1\GridDisplayClient.ServiceReference1.ProductDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\ServiceReference1\item.disco" />
     <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
     <None Include="Service References\ServiceReference1\configuration.svcinfo" />

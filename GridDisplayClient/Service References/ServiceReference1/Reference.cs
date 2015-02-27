@@ -269,11 +269,17 @@ namespace GridDisplayClient.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Create", ReplyAction="http://tempuri.org/IGridDisplay/CreateResponse")]
         System.Threading.Tasks.Task CreateAsync(ServiceReference1.ProductDto product);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Edit", ReplyAction="http://tempuri.org/IGridDisplay/EditResponse")]
-        void Edit(ServiceReference1.ProductDto product);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/GetDetails", ReplyAction="http://tempuri.org/IGridDisplay/GetDetailsResponse")]
+        ServiceReference1.ProductDto GetDetails(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Edit", ReplyAction="http://tempuri.org/IGridDisplay/EditResponse")]
-        System.Threading.Tasks.Task EditAsync(ServiceReference1.ProductDto product);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/GetDetails", ReplyAction="http://tempuri.org/IGridDisplay/GetDetailsResponse")]
+        System.Threading.Tasks.Task<ServiceReference1.ProductDto> GetDetailsAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Save", ReplyAction="http://tempuri.org/IGridDisplay/SaveResponse")]
+        void Save(ServiceReference1.ProductDto product);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGridDisplay/Save", ReplyAction="http://tempuri.org/IGridDisplay/SaveResponse")]
+        System.Threading.Tasks.Task SaveAsync(ServiceReference1.ProductDto product);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -327,12 +333,20 @@ namespace GridDisplayClient.ServiceReference1 {
             return base.Channel.CreateAsync(product);
         }
         
-        public void Edit(ServiceReference1.ProductDto product) {
-            base.Channel.Edit(product);
+        public ServiceReference1.ProductDto GetDetails(int id) {
+            return base.Channel.GetDetails(id);
         }
         
-        public System.Threading.Tasks.Task EditAsync(ServiceReference1.ProductDto product) {
-            return base.Channel.EditAsync(product);
+        public System.Threading.Tasks.Task<ServiceReference1.ProductDto> GetDetailsAsync(int id) {
+            return base.Channel.GetDetailsAsync(id);
+        }
+        
+        public void Save(ServiceReference1.ProductDto product) {
+            base.Channel.Save(product);
+        }
+        
+        public System.Threading.Tasks.Task SaveAsync(ServiceReference1.ProductDto product) {
+            return base.Channel.SaveAsync(product);
         }
     }
 }
